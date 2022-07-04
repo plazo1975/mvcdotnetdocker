@@ -36,7 +36,7 @@ jobs:
       uses: AkhileshNS/heroku-deploy@v3.12.12
       with:
         heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-        heroku_email: ${{secrets.HEROKU_USERNAME
+        heroku_email: ${{secrets.HEROKU_USERNAME}}
         heroku_app_name: mvcdotnetdocker
         docker_heroku_process_type: web
         region: Europe
