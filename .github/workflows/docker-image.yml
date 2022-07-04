@@ -6,6 +6,8 @@ on:
   pull_request:
     branches: [ "master" ]
 
+  workflow_dispatch:
+  
 jobs:
 
   build:
@@ -13,8 +15,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    
     - uses: actions/checkout@v3
+          
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
-    - name: Push to DockerHub  
-      run: docker push plazo/mvcdotnetdocker:$(date +%s)
+      run: docker build . --file Dockerfile --tag mvcdotnetdocker:$(date +%s)
+#    - name: Push to DockerHub  
+ #     run: docker push plazo/mvcdotnetdocker:$(date +%s)
