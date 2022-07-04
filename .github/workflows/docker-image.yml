@@ -31,4 +31,21 @@ jobs:
     - name: Push to docker hub
       run: |
          docker push plazo/mvcdotnetdocker
+         
+    - name: Login to heroku container
+      uses: AkhileshNS/heroku-deploy@v3.12.12
+      with:
+        heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+        heroku_email: ${{secrets.HEROKU_USERNAME
+        heroku_app_name: mvcdotnetdocker
+        docker_heroku_process_type: web
+        region: Europe
+        justlogin: true
+    - name: Deploy to heroku
+      run: |
+          heroku container:login
+          heroku container:push web -a plazo/mvcdotnetdocker
+          heroku container:release web -a mvcdotnetdocker
+      
+        
 
