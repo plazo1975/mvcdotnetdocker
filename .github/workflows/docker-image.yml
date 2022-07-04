@@ -44,6 +44,7 @@ jobs:
     - name: Deploy to heroku
       run: |
           heroku container:login
+          docker tag mvcdotnetdocker registry.heroku.com/mvcdotnetdocker/web
           heroku container:push web -a plazo/mvcdotnetdocker
           heroku container:release web -a mvcdotnetdocker
       
