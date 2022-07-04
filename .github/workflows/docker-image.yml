@@ -27,4 +27,8 @@ jobs:
     - name: Build the Docker image
       run: |
          docker build . --file Dockerfile --tag mvcdotnetdocker:$(date +%s)
+    
+    - name: Push to docker hub
+      run: |
+         docker push plazo/mvcdotnetdocker:$(date +%s)
 
