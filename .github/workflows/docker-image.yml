@@ -1,0 +1,55 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+  workflow_dispatch:
+  
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    
+    - uses: actions/checkout@v3
+    
+    - name: Docker Login
+      env:
+        DOCKER_USER: ${{secrets.DOCKER_USER}}
+        DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+      run: |
+         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+              
+    - name: Build the Docker image
+      run: |
+         docker build . --file Dockerfile --tag plazo/mvcdotnetdocker
+    
+    - name: Push to docker hub
+      run: |
+         docker push plazo/mvcdotnetdocker
+         
+    - name: Login to heroku container
+      uses: AkhileshNS/heroku-deploy@v3.12.12
+      with:
+        heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+        heroku_email: ${{secrets.HEROKU_USERNAME}}
+        heroku_app_name: mvcdotnetdocker
+        docker_heroku_process_type: web
+        region: Europe
+        justlogin: true
+    - name: Deploy to heroku
+      env:
+        HEROKU_REGISTRY_URL: registry.heroku.com
+        HEROKU_TOKEN : ${{secrets.HEROKU_API_KEY}}
+      run: |
+          docker login --username=_ --password $HEROKU_TOKEN $HEROKU_REGISTRY_URL
+         
+          heroku container:push web -a mvcdotnetdocker
+          heroku container:release web -a mvcdotnetdocker
+      
+        
+
