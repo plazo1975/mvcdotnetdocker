@@ -1,0 +1,48 @@
+name: Docker deploy acc prd
+
+on:
+  workflow_dispatch:
+  
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    
+    - uses: actions/checkout@v3
+    
+    - name: Docker Login
+      env:
+        DOCKER_USER: ${{secrets.DOCKER_USER}}
+        DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+      run: |
+         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+              
+    - name: Build the Docker image
+      run: |
+         docker build . --file Dockerfile --tag plazo/mvcdotnetdocker --tag plazo/mvcdotnetdocker:${GITHUB_RUN_NUMBER}
+    
+    - name: Push to docker hub
+      run: |
+         docker push --all-tags plazo/mvcdotnetdocker
+    
+    - name: Deploy to ACC
+      env:
+        HEROKU_REGISTRY_URL: registry.heroku.com
+        HEROKU_TOKEN : ${{secrets.HEROKU_API_KEY}}
+      run: |
+          docker login --username=_ --password $HEROKU_TOKEN $HEROKU_REGISTRY_URL
+          docker tag plazo/mvcdotnetdocker registry.heroku.com/mvcdotnetdocker-acc/web
+          docker push registry.heroku.com/mvcdotnetdocker-acc/web
+          heroku container:release web -a mvcdotnetdocker-acc
+    
+    - name: Deploy to PRD
+      env:
+        HEROKU_REGISTRY_URL: registry.heroku.com
+        HEROKU_TOKEN : ${{secrets.HEROKU_API_KEY}}
+      run: |
+          docker login --username=_ --password $HEROKU_TOKEN $HEROKU_REGISTRY_URL
+          docker tag plazo/mvcdotnetdocker registry.heroku.com/mvcdotnetdocker-prd/web
+          docker push registry.heroku.com/mvcdotnetdocker-prd/web
+          heroku container:release web -a mvcdotnetdocker-prd
