@@ -30,7 +30,7 @@ jobs:
     
     - name: Push to docker hub
       run: |
-         docker push plazo/mvcdotnetdocker
+         docker push --all-tags plazo/mvcdotnetdocker
          
     - name: Login to heroku container
       uses: AkhileshNS/heroku-deploy@v3.12.12
