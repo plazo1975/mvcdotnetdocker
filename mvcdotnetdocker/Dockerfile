@@ -1,5 +1,5 @@
 #See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
-ARG VERSION=6.0
+ARG VERSION=6.0-alpine
 
 FROM mcr.microsoft.com/dotnet/aspnet:$VERSION AS base
 WORKDIR /app
