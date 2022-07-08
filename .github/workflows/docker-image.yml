@@ -26,7 +26,7 @@ jobs:
               
     - name: Build the Docker image
       run: |
-         docker build . --file Dockerfile --tag plazo/mvcdotnetdocker
+         docker build . --file Dockerfile --tag plazo/mvcdotnetdocker --tag plazo/mvcdotnetdocker:${GITHUB_RUN_NUMBER}
     
     - name: Push to docker hub
       run: |
