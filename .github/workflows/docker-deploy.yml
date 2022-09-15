@@ -1,11 +1,6 @@
-name: Docker Image CI
+name: Docker deploy acc prd
 
 on:
-  #push:
-   # branches: [ "master" ]
-  #pull_request:
-  #  branches: [ "master" ]
-
   workflow_dispatch:
   
 jobs:
@@ -31,25 +26,32 @@ jobs:
     - name: Push to docker hub
       run: |
          docker push --all-tags plazo/mvcdotnetdocker
-         
+    
     - name: Login to heroku container
       uses: AkhileshNS/heroku-deploy@v3.12.12
       with:
         heroku_api_key: ${{secrets.HEROKU_API_KEY}}
         heroku_email: ${{secrets.HEROKU_USERNAME}}
-        heroku_app_name: mvcdotnetdocker
         docker_heroku_process_type: web
         region: Europe
         justlogin: true
-    - name: Deploy to heroku
+        
+    - name: Deploy to ACC
       env:
         HEROKU_REGISTRY_URL: registry.heroku.com
         HEROKU_TOKEN : ${{secrets.HEROKU_API_KEY}}
       run: |
           docker login --username=_ --password $HEROKU_TOKEN $HEROKU_REGISTRY_URL
-         
-          heroku container:push web -a mvcdotnetdocker
-          heroku container:release web -a mvcdotnetdocker
-      
-        
-
+          docker tag plazo/mvcdotnetdocker registry.heroku.com/mvcdotnetdocker-acc/web
+          docker push registry.heroku.com/mvcdotnetdocker-acc/web
+          heroku container:release web -a mvcdotnetdocker-acc
+    
+    - name: Deploy to PRD
+      env:
+        HEROKU_REGISTRY_URL: registry.heroku.com
+        HEROKU_TOKEN : ${{secrets.HEROKU_API_KEY}}
+      run: |
+          docker login --username=_ --password $HEROKU_TOKEN $HEROKU_REGISTRY_URL
+          docker tag plazo/mvcdotnetdocker registry.heroku.com/mvcdotnetdocker-prd/web
+          docker push registry.heroku.com/mvcdotnetdocker-prd/web
+          heroku container:release web -a mvcdotnetdocker-prd
