@@ -25,15 +25,29 @@ jobs:
        username: ${{ secrets.DOCKER_USER }}
        password: ${{ secrets.DOCKER_PASSWORD }}
                  
+    
+    
+    - name: Docker Metadata action
+      uses: docker/metadata-action@v4.0.1
+      with:
+        images: plazo/mvcdotnetdocker
+        flavor:
+          latest=false
+        tags:
+           type=raw, value=04
+           type=raw, value=latest, enable=${{ endsWith(github.ref, github.event.repository}}
+           type=ref, event=pr
+           type=ref, event=branch
+           type=semver, pattertn={{version}}
+        
     - name: Build the Docker image
       uses: docker/build-push-action@v3.1.1
       with:
-        push: ${{ github.event_name != 'pull_request' }}
-        tags: plazo/mvcdotnetdocker
+        push: true
+        tags: ${{ steps.docker_meta.outputs.tags }}
+        labels: ${{ steps.docker_meta.outputs.labels }}
         cache-from: type=gha
         cache-to: type=gha,mode=max
-    
-    
     
     
     
