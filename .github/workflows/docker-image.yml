@@ -40,7 +40,7 @@ jobs:
            #type=ref, event=pr
            #type=ref, event=branch
            #type=semver, pattern={{version}}
-           # branch event
+           # branch event 
             type=ref,event=branch
             type=ref,event=tag
             type=ref,event=pr
