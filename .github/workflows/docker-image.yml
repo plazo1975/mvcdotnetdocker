@@ -35,7 +35,7 @@ jobs:
           latest=false
         tags:
            type=raw, value=04
-           type=raw, value=latest, enable=${{ endsWith(github.ref, github.event.repository}}
+           type=raw, value=latest, enable=${{ endsWith(github.ref}}
            type=ref, event=pr
            type=ref, event=branch
            type=semver, pattertn={{version}}
