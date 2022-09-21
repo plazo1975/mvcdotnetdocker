@@ -35,15 +35,13 @@ jobs:
         flavor:
           latest=false
         tags:
-           #type=raw, value=04
-           #type=raw, value=latest, enable=${{ endsWith(github.ref, github.event.repository.default_branch) }}
-           #type=ref, event=pr
-           #type=ref, event=branch
-           #type=semver, pattern={{version}}
-           # branch event 
-            type=ref,event=branch
-            type=ref,event=tag
-            type=ref,event=pr
+           type=raw, value=04
+           type=raw, value=latest, enable=${{ endsWith(github.ref, github.event.repository.default_branch) }}
+           type=ref, event=pr
+           type=ref, event=branch
+           type=semver, pattern={{version}}
+           branch event 
+           
         
     - name: Build the Docker image
       uses: docker/build-push-action@v3.1.1
