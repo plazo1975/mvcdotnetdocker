@@ -1,6 +1,6 @@
 {
   "name": "iloan.onboard.web",
-  "version": "2.43.17",
+  "version": "2.43.18",
   "description": "frontend iloan onboard",
   "main": "index.js",
   "scripts": {

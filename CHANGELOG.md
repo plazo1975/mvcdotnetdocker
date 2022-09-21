@@ -1,3 +1,12 @@
+## [2.43.18](https://github.com/plazo1975/mvcdotnetdocker/compare/v2.43.17...v2.43.18) (2022-09-21)
+
+
+### Bug Fixes
+
+* create test file ([913ec46](https://github.com/plazo1975/mvcdotnetdocker/commit/913ec4680d4a7d37aaa5319c9630d925c50d08f4))
+
+
+
 ## [2.43.17](https://github.com/plazo1975/mvcdotnetdocker/compare/v1.0.0...v2.43.17) (2022-09-20)
 
 
