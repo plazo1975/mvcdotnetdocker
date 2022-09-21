@@ -24,7 +24,11 @@ jobs:
       uses: docker/metadata-action@v4.0.1
       with:
         images: plazo/mvcdotnetdocker
-        
+        tags: |
+            type=ref,event=branch
+            type=ref,event=pr
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}} 
     
     
     - name: Login to Docker Hub
