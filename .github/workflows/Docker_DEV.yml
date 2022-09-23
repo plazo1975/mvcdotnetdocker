@@ -34,7 +34,7 @@ jobs:
       uses: docker/metadata-action@v4.0.1
       with:
        flavor: |
-          latest=auto
+          latest=true
        images: 
           plazo/mvcdotnetdocker
        
