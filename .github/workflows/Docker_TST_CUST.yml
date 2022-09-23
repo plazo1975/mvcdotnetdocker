@@ -1,14 +1,14 @@
-name: Docker Image CI
+name: Docker TEST CUSTOMER
 
 on:
-  push:
-    branches:
-      - 'master'
-    tags:
-      - 'v*'
-  pull_request:
-    branches:
-      - 'master'
+ # push:
+  #  branches:
+   #   - 'master'
+    #tags:
+     # - 'v*'
+  #pull_request:
+  #  branches:
+   #   - 'master'
 
   workflow_dispatch:
   
@@ -76,6 +76,3 @@ jobs:
     #     
     #      heroku container:push web -a mvcdotnetdocker
     #      heroku container:release web -a mvcdotnetdocker
-      
-        
-
