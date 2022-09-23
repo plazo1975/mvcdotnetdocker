@@ -33,13 +33,20 @@ jobs:
       id: docker_meta
       uses: docker/metadata-action@v4.0.1
       with:
-        images: plazo/mvcdotnetdocker
+        images: 
+          plazo/mvcdotnetdocker
+        tags:
+          type=ref,event=branch
+          type=ref,event=pr
+          type=semver,pattern={{version}}
+          type=semver,pattern={{major}}.{{minor}} 
   
     - name: Build and push Docker images
       uses: docker/build-push-action@v3.1.1
       with:
         push: true
-        tags: develop
+        tags: ${{ steps.docker_meta.outputs.tags }}
+        labels: ${{ steps.docker_meta.outputs.labels }}
         cache-from: type=gha
         cache-to: type=gha,mode=max
     
