@@ -4,7 +4,7 @@ on:
 
   push:
     branches:
-      - 'dev'
+      - 'develop'
 
   workflow_dispatch:
   
@@ -44,9 +44,9 @@ jobs:
         cache-from: type=gha
         cache-to: type=gha,mode=max
     
-    - name: Pull dev image
-      run:
-       docker pull plazo/mvcdotnetdocker:dev
+    #- name: Pull dev image
+    #  run:
+    #   docker pull plazo/mvcdotnetdocker:dev
         
     - name: Login to heroku container
       uses: AkhileshNS/heroku-deploy@v3.12.12
