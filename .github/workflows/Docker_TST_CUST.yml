@@ -7,7 +7,7 @@ on:
 
 env:
   APPNAME: mvcdotnetdocker-tst-customer
-  TAG: plazo/mvcdotnetdocker:main
+  TAG: plazo/mvcdotnetdocker
   DOCKERREPONAME: plazo/mvcdotnetdocker
   HEROKU_REGISTRY_URL: registry.heroku.com
   HEROKU_TOKEN : ${{secrets.HEROKU_API_KEY}}
