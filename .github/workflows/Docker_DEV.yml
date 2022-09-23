@@ -63,6 +63,6 @@ jobs:
         HEROKU_TOKEN : ${{secrets.HEROKU_API_KEY}}
       run: |
            docker login --username=_ --password $HEROKU_TOKEN $HEROKU_REGISTRY_URL
-           docker tag plazo/mvcdotnetdocker:dev registry.heroku.com/plazo/mvcdotnetdocker-dev/web
-           docker push registry.heroku.com/plazo/mvcdotnetdocker-dev/web -a mvcdotnetdocker-dev
+           docker tag plazo/mvcdotnetdocker:dev registry.heroku.com/mvcdotnetdocker-dev/web
+           docker push registry.heroku.com/mvcdotnetdocker-dev/web
            heroku container:release web -a mvcdotnetdocker-dev
