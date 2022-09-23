@@ -57,6 +57,6 @@ jobs:
     - name: Deploy to heroku
       run: |
            docker login --username=_ --password $HEROKU_TOKEN $HEROKU_REGISTRY_URL
-           docker tag $TAG:{{tag}} registry.heroku.com/$APPNAME/web
+           docker tag $TAG:${{ steps.docker_meta.outputs.tags }} registry.heroku.com/$APPNAME/web
            docker push $HEROKU_REGISTRY_URL/$APPNAME/web
            heroku container:release web -a $APPNAME
