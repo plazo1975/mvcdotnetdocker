@@ -35,10 +35,7 @@ jobs:
       with:
         images: 
           plazo/mvcdotnetdocker
-        tags:
-          type=ref,event=branch
-          type=ref,event=pr
-        
+       
   
     - name: Build and push Docker images
       uses: docker/build-push-action@v3.1.1
