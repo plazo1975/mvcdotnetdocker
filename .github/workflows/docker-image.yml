@@ -58,24 +58,24 @@ jobs:
     #     docker push --all-tags plazo/mvcdotnetdocker
     
     
-    #- name: Login to heroku container
-    #  uses: AkhileshNS/heroku-deploy@v3.12.12
-    #  with:
-    #    heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-    #    heroku_email: ${{secrets.HEROKU_USERNAME}}
-    #    heroku_app_name: mvcdotnetdocker
-    #    docker_heroku_process_type: web
-    #    region: Europe
-    #    justlogin: true
-    #- name: Deploy to heroku
-    #  env:
-    #    HEROKU_REGISTRY_URL: registry.heroku.com
-    #    HEROKU_TOKEN : ${{secrets.HEROKU_API_KEY}}
-    #  run: |
-    #      docker login --username=_ --password $HEROKU_TOKEN $HEROKU_REGISTRY_URL
-    #     
-    #      heroku container:push web -a mvcdotnetdocker
-    #      heroku container:release web -a mvcdotnetdocker
+    - name: Login to heroku container
+      uses: AkhileshNS/heroku-deploy@v3.12.12
+      with:
+        heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+        heroku_email: ${{secrets.HEROKU_USERNAME}}
+        heroku_app_name: mvcdotnetdocker-dev
+        docker_heroku_process_type: web
+        region: Europe
+        justlogin: true
+    - name: Deploy to heroku
+      env:
+        HEROKU_REGISTRY_URL: registry.heroku.com
+        HEROKU_TOKEN : ${{secrets.HEROKU_API_KEY}}
+      run: |
+          docker login --username=_ --password $HEROKU_TOKEN $HEROKU_REGISTRY_URL
+          docker push registry.heroku.com/mvcdotnetdocker-dev/web
+          heroku container:push web -a mvcdotnetdocker-dev
+          heroku container:release web -a mvcdotnetdocker-dev
       
         
 
