@@ -59,12 +59,22 @@ jobs:
         region: Europe
         justlogin: true
     
-    - name: Deploy to heroku
+   # - name: Deploy to heroku
+   #   env:
+   #     HEROKU_REGISTRY_URL: registry.heroku.com
+   #     HEROKU_TOKEN : ${{secrets.HEROKU_API_KEY}}
+   #   run: |
+   #        docker login --username=_ --password $HEROKU_TOKEN $HEROKU_REGISTRY_URL
+   #        docker tag plazo/mvcdotnetdocker registry.heroku.com/mvcdotnetdocker-dev/web
+   #        docker push registry.heroku.com/mvcdotnetdocker-dev/web
+   #        heroku container:release web -a mvcdotnetdocker-dev
+    - name: Deploy to Heroku
       env:
         HEROKU_REGISTRY_URL: registry.heroku.com
         HEROKU_TOKEN : ${{secrets.HEROKU_API_KEY}}
       run: |
-           docker login --username=_ --password $HEROKU_TOKEN $HEROKU_REGISTRY_URL
-           docker tag plazo/mvcdotnetdocker registry.heroku.com/mvcdotnetdocker-dev/web
-           docker push registry.heroku.com/mvcdotnetdocker-dev/web
-           heroku container:release web -a mvcdotnetdocker-dev
+          docker login --username=_ --password $HEROKU_TOKEN $HEROKU_REGISTRY_URL
+          docker tag plazo/mvcdotnetdocker registry.heroku.com/mvcdotnetdocker-dev/web
+          docker push registry.heroku.com/mvcdotnetdocker-dev/web
+          heroku container:release web -a mvcdotnetdocker-dev
+         
