@@ -11,6 +11,7 @@ env:
   DOCKERREPONAME: plazo/mvcdotnetdocker
   HEROKU_REGISTRY_URL: registry.heroku.com
   HEROKU_TOKEN : ${{secrets.HEROKU_API_KEY}}
+  
 
 jobs:
 
@@ -35,12 +36,12 @@ jobs:
           latest=false
        images: 
           plazo/mvcdotnetdocker
-       
+    
     - name: Build the Docker image
       uses: docker/build-push-action@v3.1.1
       with:
         push: true
-        tags: ${{ steps.docker_meta.outputs.tags }}
+        tags: ${{ steps.docker_meta.outputs.tags }}, plazo/mvcdotnetdocker:production_ready
         labels: ${{ steps.docker_meta.outputs.labels }}
      
   
