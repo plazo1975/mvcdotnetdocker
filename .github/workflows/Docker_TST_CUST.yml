@@ -43,8 +43,8 @@ jobs:
       uses: docker/build-push-action@v3.1.1
       with:
         push: true
-        tags: ${{ steps.docker_meta.outputs.tags }}, production_ready
-        labels: ${{ steps.docker_meta.outputs.labels }}, production_ready
+        tags: ${{ steps.docker_meta.outputs.tags }}, plazo/mvcdotnetdocker:production_ready
+        labels: ${{ steps.docker_meta.outputs.labels }}
      
   
     - name: Login to heroku container
