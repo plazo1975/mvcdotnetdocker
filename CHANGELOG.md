@@ -1,3 +1,12 @@
+## [2.43.28](https://github.com/plazo1975/mvcdotnetdocker/compare/v2.43.27...v2.43.28) (2022-09-24)
+
+
+### Bug Fixes
+
+* version 4 stuff ([1971931](https://github.com/plazo1975/mvcdotnetdocker/commit/1971931c9fa94fae0dd07139dde4cffa0cf6e770))
+
+
+
 ## [2.43.27](https://github.com/plazo1975/mvcdotnetdocker/compare/v2.43.26...v2.43.27) (2022-09-24)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * continue development with new stuff ([f6d35a8](https://github.com/plazo1975/mvcdotnetdocker/commit/f6d35a812f6c5fe135335bcc1a3395b024fbbb01))
-
-
-
-## [2.43.23](https://github.com/plazo1975/mvcdotnetdocker/compare/v2.43.22...v2.43.23) (2022-09-23)
-
-
-### Bug Fixes
-
-* did some fixing in dev ([002b986](https://github.com/plazo1975/mvcdotnetdocker/commit/002b986e5eafe1557b435cd22e660099215dd75f))
 
 
 
