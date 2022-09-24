@@ -36,7 +36,9 @@ jobs:
           latest=false
        images: 
           plazo/mvcdotnetdocker
-              
+       tags: |
+            type=ref,event=branch
+
     - name: Build the Docker image
       uses: docker/build-push-action@v3.1.1
       with:
