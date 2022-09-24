@@ -1,3 +1,22 @@
+## [2.43.23](https://github.com/plazo1975/mvcdotnetdocker/compare/v2.43.22...v2.43.23) (2022-09-23)
+
+
+### Bug Fixes
+
+* did some fixing in dev ([002b986](https://github.com/plazo1975/mvcdotnetdocker/commit/002b986e5eafe1557b435cd22e660099215dd75f))
+
+
+
+## [2.43.22](https://github.com/plazo1975/mvcdotnetdocker/compare/v2.43.21...v2.43.22) (2022-09-23)
+
+
+### Bug Fixes
+
+* change branche from master to main ([c460a8c](https://github.com/plazo1975/mvcdotnetdocker/commit/c460a8c71926d91b01acd0a4e52fc2facb75fe9d))
+* version1 done ([f7f55ec](https://github.com/plazo1975/mvcdotnetdocker/commit/f7f55ecd9607a7b4bba511d8ccf5d6b1e0751d0e))
+
+
+
 ## [2.43.21](https://github.com/plazo1975/mvcdotnetdocker/compare/v2.43.20...v2.43.21) (2022-09-21)
 
 
@@ -22,14 +41,6 @@
 ### Bug Fixes
 
 * xxxxx ([efd1c60](https://github.com/plazo1975/mvcdotnetdocker/commit/efd1c6012cacd62064a87ae9c47c6d33d3214994))
-
-
-
-## [2.44.1](https://github.com/plazo1975/mvcdotnetdocker/compare/v2.44.0...v2.44.1) (2022-09-21)
-
-
-
-# [2.44.0](https://github.com/plazo1975/mvcdotnetdocker/compare/v2.43.18...v2.44.0) (2022-09-21)
 
 
 
