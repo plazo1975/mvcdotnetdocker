@@ -1,4 +1,4 @@
-name: Manual customer1 PRD
+name: Docker PRD Customer1
 
 on:
   workflow_dispatch
