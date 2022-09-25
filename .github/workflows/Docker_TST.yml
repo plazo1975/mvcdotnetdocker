@@ -51,6 +51,10 @@ jobs:
     
     steps:
     
+    - name: Pull image
+      run:
+       docker pull $TAG
+    
     - name: Login to heroku container
       uses: AkhileshNS/heroku-deploy@v3.12.12
       with:
@@ -79,6 +83,10 @@ jobs:
      HEROKU_TOKEN : ${{secrets.HEROKU_API_KEY}}
     
     steps:
+    
+    - name: Pull image
+      run:
+       docker pull $TAG
     
     - name: Login to heroku container
       uses: AkhileshNS/heroku-deploy@v3.12.12
