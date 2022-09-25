@@ -1,3 +1,13 @@
+## [2.43.30](https://github.com/plazo1975/mvcdotnetdocker/compare/v2.43.29...v2.43.30) (2022-09-25)
+
+
+### Bug Fixes
+
+* version 6.0 ([c7f13f9](https://github.com/plazo1975/mvcdotnetdocker/commit/c7f13f9f2dbba55dcc2b822a7eaa7d1ddbd2d360))
+* version 6.5 ([3ddbd5e](https://github.com/plazo1975/mvcdotnetdocker/commit/3ddbd5eade14b7a2bb7fcb5f24b78fb221ddcde1))
+
+
+
 ## [2.43.29](https://github.com/plazo1975/mvcdotnetdocker/compare/v2.43.28...v2.43.29) (2022-09-25)
 
 
@@ -32,15 +42,6 @@
 ### Bug Fixes
 
 * add branch name ([bf7027b](https://github.com/plazo1975/mvcdotnetdocker/commit/bf7027ba879602e08cc51da9cc5a0af5c7db680b))
-
-
-
-## [2.43.25](https://github.com/plazo1975/mvcdotnetdocker/compare/v2.43.24...v2.43.25) (2022-09-24)
-
-
-### Bug Fixes
-
-* add main tag to build ([e9e2cf9](https://github.com/plazo1975/mvcdotnetdocker/commit/e9e2cf976084a7916b5dcac701e74b90915240c1))
 
 
 
