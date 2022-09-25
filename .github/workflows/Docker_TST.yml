@@ -72,7 +72,7 @@ jobs:
         region: Europe
         justlogin: true
     
-    - name: Deploy to heroku $APPNAME
+    - name: Deploy to heroku
       run: |
            docker login --username=_ --password $HEROKU_TOKEN $HEROKU_REGISTRY_URL
            docker tag $TAG registry.heroku.com/$APPNAME/web
@@ -107,7 +107,7 @@ jobs:
         region: Europe
         justlogin: true
     
-    - name: Deploy to heroku $APPNAME
+    - name: Deploy to heroku
       run: |
            docker login --username=_ --password $HEROKU_TOKEN $HEROKU_REGISTRY_URL
            docker tag $TAG registry.heroku.com/$APPNAME/web
