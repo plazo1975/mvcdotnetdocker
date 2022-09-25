@@ -53,6 +53,12 @@ jobs:
      APPNAME: mvcdotnetdocker-tst
     steps:
     
+    - name: Login to Docker Hub
+      uses: docker/login-action@v2.0.0
+      with:
+       username: ${{ secrets.DOCKER_USER }}
+       password: ${{ secrets.DOCKER_PASSWORD }} 
+    
     - name: Pull image
       run:
        docker pull $TAG
@@ -66,7 +72,7 @@ jobs:
         region: Europe
         justlogin: true
     
-    - name: Deploy to heroku
+    - name: Deploy to heroku $APPNAME
       run: |
            docker login --username=_ --password $HEROKU_TOKEN $HEROKU_REGISTRY_URL
            docker tag $TAG registry.heroku.com/$APPNAME/web
@@ -82,6 +88,12 @@ jobs:
       
     steps:
     
+    - name: Login to Docker Hub
+      uses: docker/login-action@v2.0.0
+      with:
+       username: ${{ secrets.DOCKER_USER }}
+       password: ${{ secrets.DOCKER_PASSWORD }} 
+       
     - name: Pull image
       run:
        docker pull $TAG
@@ -95,7 +107,7 @@ jobs:
         region: Europe
         justlogin: true
     
-    - name: Deploy to heroku
+    - name: Deploy to heroku $APPNAME
       run: |
            docker login --username=_ --password $HEROKU_TOKEN $HEROKU_REGISTRY_URL
            docker tag $TAG registry.heroku.com/$APPNAME/web
