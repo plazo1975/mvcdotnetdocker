@@ -11,7 +11,7 @@ env:
   HEROKU_TOKEN : ${{secrets.HEROKU_API_KEY}}
 
 jobs:
-  Deploy_ACC:
+  Deploy:
     runs-on: ubuntu-latest
     environment: Production Customer1
 
