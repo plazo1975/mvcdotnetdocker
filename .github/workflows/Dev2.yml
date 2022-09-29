@@ -1,0 +1,30 @@
+name: Deploy to development
+
+on:
+  workflow_dispatch:
+
+jobs:
+
+  firstjob:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Run a script
+      run: echo Hello
+   
+  Deploy:
+     uses: plazo1975/actions/.github/workflows/001_BuildAnd.PublishDockerImage.yml@main
+     
+     with:
+      image_name: plazo/mvcdotnetdocker
+      TAG: plazo/mvcdotnetdocker
+      latest: true
+      DOCKERREPONAME: plazo/mvcdotnetdocker
+      APPNAME: mvcdotnetdocker-dev
+     
+     secrets:
+      DOCKER_USER: ${{ secrets.DOCKER_USER }}
+      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      HEROKU_TOKEN: ${{secrets.HEROKU_API_KEY}}
