@@ -1,12 +1,10 @@
-name: Create and Publish Docker Image
+name: 001 Create and Publish Docker Image
 
 on:
   workflow_call:
     inputs:
      image_name:
         required: true
-        type: string
-     tag: 
         type: string
      latest:   
         required: true
