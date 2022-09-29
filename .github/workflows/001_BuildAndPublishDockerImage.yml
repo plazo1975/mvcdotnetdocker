@@ -23,7 +23,9 @@ on:
           required: true
         DOCKER_PASSWORD:
           required: true
-        HEROKU_TOKEN:
+        HEROKU_USERNAME:
+          required: true
+        HEROKU_API_KEY: 
           required: true
 env:
   HEROKU_REGISTRY_URL: registry.heroku.com
@@ -72,7 +74,7 @@ jobs:
       
       - name: Deploy to heroku
         run: |
-           docker login --username=_ --password $HEROKU_TOKEN $HEROKU_REGISTRY_URL
+           docker login --username=_ --password ${{secrets.HEROKU_API_KEY}} $HEROKU_REGISTRY_URL
            docker tag $TAG registry.heroku.com/$APPNAME/web
            docker push $HEROKU_REGISTRY_URL/$APPNAME/web
            heroku container:release web -a $APPNAME
