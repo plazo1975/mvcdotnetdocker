@@ -20,7 +20,7 @@ jobs:
      
      with:
       image_name: plazo/mvcdotnetdocker
-      TAG: plazo/mvcdotnetdocker
+      TAG: plazo/mvcdotnetdocker:latest
       latest: true
       DOCKERREPONAME: plazo/mvcdotnetdocker
       APPNAME: mvcdotnetdocker-dev
