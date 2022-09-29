@@ -15,7 +15,7 @@ jobs:
       run: echo Hello
    
   Deploy:
-     uses: plazo1975/mvcdotnetdocker/.github/workflows/001_BuildAndPublishDockerImage.yml@main
+     uses: plazo1975/mvcdotnetdocker/.github/workflows/001_BuildAndPublishDockerImage.yml@develop
      
      with:
       image_name: plazo/mvcdotnetdocker
