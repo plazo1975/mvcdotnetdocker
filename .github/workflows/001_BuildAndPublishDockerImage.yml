@@ -78,8 +78,3 @@ jobs:
            docker tag $TAG registry.heroku.com/$APPNAME/web
            docker push $HEROKU_REGISTRY_URL/$APPNAME/web
            heroku container:release web -a $APPNAME
-  do-something-else:
-    runs-on: ubuntu-latest
-
-    steps:
-    - run: echo "Hello"
