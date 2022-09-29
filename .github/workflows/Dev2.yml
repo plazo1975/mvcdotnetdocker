@@ -28,4 +28,5 @@ jobs:
      secrets:
       DOCKER_USER: ${{ secrets.DOCKER_USER }}
       DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-      HEROKU_TOKEN: ${{secrets.HEROKU_API_KEY}}
+      HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
+      HEROKU_USERNAME: ${{secrets.HEROKU_USERNAME}}
