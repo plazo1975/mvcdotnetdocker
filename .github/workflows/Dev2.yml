@@ -20,7 +20,7 @@ jobs:
        uses: plazo1975/mvcdotnetdocker/.github/workflows/002_DeployImageToHeroku.yml@develop
        with:
         APPNAME: mvcdotnetdocker-dev
-        TAG: plazo/mvcdotnetdocker:develop
+        TAG: plazo/mvcdotnetdocker
        secrets:
         DOCKER_USER: ${{ secrets.DOCKER_USER }}
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
