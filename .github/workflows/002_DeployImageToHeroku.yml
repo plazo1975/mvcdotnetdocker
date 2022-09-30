@@ -40,7 +40,7 @@ jobs:
       - name: Docker pull
         uses: docker/build-push-action@v3.1.1
         with:
-         pull: $TAG
+         pull: ${{inputs.TAG}}
       
       - name: Login to heroku container
         uses: AkhileshNS/heroku-deploy@v3.12.12
@@ -53,7 +53,7 @@ jobs:
       
       - name: Deploy to heroku
         run: |
-           docker login --username=_ --password ${{secrets.HEROKU_API_KEY}} $HEROKU_REGISTRY_URL
-           docker tag $TAG registry.heroku.com/$APPNAME/web
-           docker push $HEROKU_REGISTRY_URL/$APPNAME/web
-           heroku container:release web -a $APPNAME
+           docker login --username=_ --password ${{secrets.HEROKU_API_KEY}} registry.heroku.com
+           docker tag ${{inputs.TAG}} registry.heroku.com/$APPNAME/web
+           docker push registry.heroku.com/${{inputs.APPNAME}}/web
+           heroku container:release web -a ${{inputs.APPNAME}}
