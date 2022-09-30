@@ -2,7 +2,10 @@ name: Deploy to development
 
 on:
   workflow_dispatch:
-
+  push:
+   branches:
+     - 'develop'
+  
 jobs:
   Build:
       uses: plazo1975/mvcdotnetdocker/.github/workflows/001_BuildAndPublishDockerImage.yml@develop
