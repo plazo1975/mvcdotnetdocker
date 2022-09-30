@@ -14,8 +14,7 @@ jobs:
       secrets:
        DOCKER_USER: ${{ secrets.DOCKER_USER }}
        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-       HEROKU_USERNAME: ${{secrets.HEROKU_USERNAME}}
-       HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
+       
   Deploy:
        needs: Build
        uses: plazo1975/mvcdotnetdocker/.github/workflows/002_DeployImageToHeroku.yml@develop
@@ -25,5 +24,6 @@ jobs:
        secrets:
         DOCKER_USER: ${{ secrets.DOCKER_USER }}
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-        HEROKU_REGISTRY_URL: registry.heroku.com
         HEROKU_API_KEY : ${{secrets.HEROKU_API_KEY}}
+        HEROKU_USERNAME: ${{secrets.HEROKU_USERNAME}}
+        
