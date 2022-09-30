@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  Deploy:
+  Build:
       uses: plazo1975/mvcdotnetdocker/.github/workflows/001_BuildAndPublishDockerImage.yml@develop
       with:
        image_name: plazo/mvcdotnetdocker
