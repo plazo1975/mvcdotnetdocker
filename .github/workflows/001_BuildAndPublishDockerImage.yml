@@ -1,4 +1,4 @@
-name: 001 Create and Publish Docker Image
+name: 001 Build and Publish Docker Image
 
 on:
   workflow_call:
@@ -15,17 +15,10 @@ on:
      TAG:
         required: true
         type: string
-     APPNAME:
-        required: true
-        type: string
     secrets:
         DOCKER_USER:
           required: true
         DOCKER_PASSWORD:
-          required: true
-        HEROKU_USERNAME:
-          required: true
-        HEROKU_API_KEY: 
           required: true
 env:
   HEROKU_REGISTRY_URL: registry.heroku.com
@@ -62,19 +55,3 @@ jobs:
          push: true
          tags: ${{ steps.docker_meta.outputs.tags }}
          labels: ${{ steps.docker_meta.outputs.labels }}
-      
-      - name: Login to heroku container
-        uses: AkhileshNS/heroku-deploy@v3.12.12
-        with:
-         heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-         heroku_email: ${{secrets.HEROKU_USERNAME}}
-         docker_heroku_process_type: web
-         region: Europe
-         justlogin: true
-      
-     # - name: Deploy to heroku
-     #   run: |
-     #      docker login --username=_ --password ${{secrets.HEROKU_API_KEY}} $HEROKU_REGISTRY_URL
-     #      docker tag $TAG registry.heroku.com/$APPNAME/web
-     #      docker push $HEROKU_REGISTRY_URL/$APPNAME/web
-     #      heroku container:release web -a $APPNAME
