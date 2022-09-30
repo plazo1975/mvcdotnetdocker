@@ -14,3 +14,14 @@ jobs:
       secrets:
        DOCKER_USER: ${{ secrets.DOCKER_USER }}
        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+   
+  Deploy:
+       uses: plazo1975/mvcdotnetdocker/.github/workflows/002_DeployImageToHeroku.yml@develop
+       with:
+        APPNAME: mvcdotnetdocker-dev
+        TAG: plazo/mvcdotnetdocker:develop
+       secrets:
+        DOCKER_USER: ${{ secrets.DOCKER_USER }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        HEROKU_REGISTRY_URL: registry.heroku.com
+        HEROKU_API_KEY : ${{secrets.HEROKU_API_KEY}}
