@@ -4,29 +4,21 @@ on:
   workflow_dispatch:
 
 jobs:
-
-  firstjob:
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v3
-    
-    - name: Run a script
-      run: echo Hello
-   
+      
   Deploy:
-     needs: firstjob
-     uses: plazo1975/mvcdotnetdocker/.github/workflows/001_BuildAndPublishDockerImage.yml@develop
-     
-     with:
-      image_name: plazo/mvcdotnetdocker
-      TAG: plazo/mvcdotnetdocker:latest
-      latest: true
-      DOCKERREPONAME: plazo/mvcdotnetdocker
-      APPNAME: mvcdotnetdocker-dev
-     
-     secrets:
-      DOCKER_USER: ${{ secrets.DOCKER_USER }}
-      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-      HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
-      HEROKU_USERNAME: ${{secrets.HEROKU_USERNAME}}
+   runs-on: ubuntu-latest
+   steps:
+    - uses: actions/checkout@v3
+    - name: Deploy
+      uses: plazo1975/mvcdotnetdocker/.github/workflows/001_BuildAndPublishDockerImage.yml@develop
+      with:
+       image_name: plazo/mvcdotnetdocker
+       TAG: plazo/mvcdotnetdocker:latest
+       latest: true
+       DOCKERREPONAME: plazo/mvcdotnetdocker
+       APPNAME: mvcdotnetdocker-dev
+      secrets:
+       DOCKER_USER: ${{ secrets.DOCKER_USER }}
+       DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+       HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
+       HEROKU_USERNAME: ${{secrets.HEROKU_USERNAME}}
