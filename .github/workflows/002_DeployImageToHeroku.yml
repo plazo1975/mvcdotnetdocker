@@ -38,9 +38,8 @@ jobs:
          password: ${{ secrets.DOCKER_PASSWORD }} 
       
       - name: Docker pull
-        uses: docker/build-push-action@v3.1.1
-        with:
-         pull: ${{inputs.TAG}}
+        run:
+          docker pull ${{inputs.TAG}}
       
       - name: Login to heroku container
         uses: AkhileshNS/heroku-deploy@v3.12.12
