@@ -2,9 +2,9 @@ name: Deploy to development
 
 on:
   workflow_dispatch:
-  push:
-   branches:
-     - 'develop'
+  #push:
+  # branches:
+  #   - 'develop'
   
 jobs:
   Build:
