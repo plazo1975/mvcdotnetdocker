@@ -72,9 +72,9 @@ jobs:
          region: Europe
          justlogin: true
       
-      - name: Deploy to heroku
-        run: |
-           docker login --username=_ --password ${{secrets.HEROKU_API_KEY}} $HEROKU_REGISTRY_URL
-           docker tag $TAG registry.heroku.com/$APPNAME/web
-           docker push $HEROKU_REGISTRY_URL/$APPNAME/web
-           heroku container:release web -a $APPNAME
+     # - name: Deploy to heroku
+     #   run: |
+     #      docker login --username=_ --password ${{secrets.HEROKU_API_KEY}} $HEROKU_REGISTRY_URL
+     #      docker tag $TAG registry.heroku.com/$APPNAME/web
+     #      docker push $HEROKU_REGISTRY_URL/$APPNAME/web
+     #      heroku container:release web -a $APPNAME
