@@ -44,3 +44,21 @@ jobs:
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         HEROKU_API_KEY : ${{secrets.HEROKU_API_KEY}}
         HEROKU_USERNAME: ${{secrets.HEROKU_USERNAME}}
+
+  ReleaseTest1:
+       needs: DeployTest1
+       uses: plazo1975/mvcdotnetdocker/.github/workflows/003_ReleaseImageToHeroku.yml@develop
+       with:
+        APPNAME: mvcdotnetdocker-tst
+       secrets:
+        HEROKU_API_KEY : ${{secrets.HEROKU_API_KEY}}
+        HEROKU_USERNAME: ${{secrets.HEROKU_USERNAME}} 
+  
+  ReleaseTest2:
+       needs: DeployTest2
+       uses: plazo1975/mvcdotnetdocker/.github/workflows/003_ReleaseImageToHeroku.yml@develop
+       with:
+        APPNAME: mvcdotnetdocker-tst-customer
+       secrets:
+        HEROKU_API_KEY : ${{secrets.HEROKU_API_KEY}}
+        HEROKU_USERNAME: ${{secrets.HEROKU_USERNAME}} 
