@@ -10,7 +10,7 @@ on:
         required: true
         type: boolean
      DOCKERREPONAME:
-        required: true
+        required: false
         type: string
      ExtraTag:
         required: false
@@ -20,9 +20,7 @@ on:
           required: true
         DOCKER_PASSWORD:
           required: true
-env:
-  HEROKU_REGISTRY_URL: registry.heroku.com
-          
+
 jobs:
   build:
     runs-on: ubuntu-latest
