@@ -13,7 +13,6 @@ jobs:
        image_name: plazo/mvcdotnetdocker
        latest: true
        DOCKERREPONAME: plazo/mvcdotnetdocker
-       #ExtraTag: plazo/mvcdotnetdocker:bla
       secrets:
        DOCKER_USER: ${{ secrets.DOCKER_USER }}
        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
@@ -30,4 +29,12 @@ jobs:
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         HEROKU_API_KEY : ${{secrets.HEROKU_API_KEY}}
         HEROKU_USERNAME: ${{secrets.HEROKU_USERNAME}}
-        
+    
+  Release:
+       needs: Deploy
+       uses: plazo1975/mvcdotnetdocker/.github/workflows/003_ReleaseImageToHeroku.yml@develop
+       with:
+        APPNAME: mvcdotnetdocker-dev
+       secrets:
+        HEROKU_API_KEY : ${{secrets.HEROKU_API_KEY}}
+        HEROKU_USERNAME: ${{secrets.HEROKU_USERNAME}}      
