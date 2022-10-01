@@ -31,7 +31,7 @@ jobs:
         HEROKU_USERNAME: ${{secrets.HEROKU_USERNAME}}
    
   DeployTest2:
-       needs: DeployTest1
+       needs: Build
        uses: plazo1975/mvcdotnetdocker/.github/workflows/002_DeployImageToHeroku.yml@develop
        with:
         APPNAME: mvcdotnetdocker-tst-customer
