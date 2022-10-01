@@ -22,7 +22,7 @@ on:
         
           
 jobs:
-  Deploy:
+  DeployImage:
     runs-on: ubuntu-latest
 
     steps:
