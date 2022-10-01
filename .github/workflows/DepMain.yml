@@ -1,10 +1,10 @@
-name: Deploy to main
+name: Deploy to Staging
 
 on:
   workflow_dispatch:
-  push:
-   branches:
-     - 'main'
+  release:
+       types: [published]
+
   
 jobs:
   Build:
@@ -13,8 +13,28 @@ jobs:
        image_name: plazo/mvcdotnetdocker
        latest: false
        DOCKERREPONAME: plazo/mvcdotnetdocker
-       TAG: plazo/mvcdotnetdocker:production_ready
+       ExtraTag: plazo/mvcdotnetdocker:main
       secrets:
        DOCKER_USER: ${{ secrets.DOCKER_USER }}
        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
        
+  DeployAcc:
+       needs: Build
+       uses: plazo1975/mvcdotnetdocker/.github/workflows/002_DeployImageToHeroku.yml@develop
+       with:
+        APPNAME: mvcdotnetdocker-acc
+        TAG: plazo/mvcdotnetdocker:main
+       secrets:
+        DOCKER_USER: ${{ secrets.DOCKER_USER }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        HEROKU_API_KEY : ${{secrets.HEROKU_API_KEY}}
+        HEROKU_USERNAME: ${{secrets.HEROKU_USERNAME}}
+   
+  ReleaseAcc:
+       needs: DeployAcc
+       uses: plazo1975/mvcdotnetdocker/.github/workflows/003_ReleaseImageToHeroku.yml@develop
+       with:
+        APPNAME: mvcdotnetdocker-acc
+       secrets:
+        HEROKU_API_KEY : ${{secrets.HEROKU_API_KEY}}
+        HEROKU_USERNAME: ${{secrets.HEROKU_USERNAME}} 
