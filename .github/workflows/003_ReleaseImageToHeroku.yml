@@ -15,7 +15,7 @@ on:
         
           
 jobs:
-  Deploy:
+  ReleaseWeb:
     runs-on: ubuntu-latest
 
     steps:
