@@ -1,0 +1,20 @@
+name: Deploy to main
+
+on:
+  workflow_dispatch:
+  push:
+   branches:
+     - 'test'
+  
+jobs:
+  Build:
+      uses: plazo1975/mvcdotnetdocker/.github/workflows/001_BuildAndPublishDockerImage.yml@develop
+      with:
+       image_name: plazo/mvcdotnetdocker
+       latest: false
+       DOCKERREPONAME: plazo/mvcdotnetdocker
+       TAG: plazo/mvcdotnetdocker:production_ready
+      secrets:
+       DOCKER_USER: ${{ secrets.DOCKER_USER }}
+       DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+       
