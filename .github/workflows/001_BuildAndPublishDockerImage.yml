@@ -52,5 +52,5 @@ jobs:
         uses: docker/build-push-action@v3.1.1
         with:
          push: true
-         tags: ${{ steps.docker_meta.outputs.tags }}, {{inputs.ExtraTag}}
+         tags: ${{ steps.docker_meta.outputs.tags }}, ${{inputs.ExtraTag}}
          labels: ${{ steps.docker_meta.outputs.labels }}
