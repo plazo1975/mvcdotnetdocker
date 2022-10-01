@@ -47,6 +47,8 @@ jobs:
            latest=${{inputs.latest}}
          images: 
           ${{inputs.image_name}}
+         tags:
+          type=ref,event=branch
                 
       - name: Build the Docker image
         uses: docker/build-push-action@v3.1.1
