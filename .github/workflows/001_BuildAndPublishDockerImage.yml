@@ -12,8 +12,8 @@ on:
      DOCKERREPONAME:
         required: true
         type: string
-     TAG:
-        required: true
+     ExtraTag:
+        required: false
         type: string
     secrets:
         DOCKER_USER:
@@ -52,5 +52,5 @@ jobs:
         uses: docker/build-push-action@v3.1.1
         with:
          push: true
-         tags: ${{ steps.docker_meta.outputs.tags }}
+         tags: ${{ steps.docker_meta.outputs.tags }}, ${{inputs.ExtraTag}}
          labels: ${{ steps.docker_meta.outputs.labels }}
