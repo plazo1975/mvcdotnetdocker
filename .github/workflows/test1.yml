@@ -2,9 +2,12 @@ name: Deploy to test
 
 on:
   workflow_dispatch:
-  push:
-   branches:
-     - 'test'
+  #push:
+  pull_request_target:
+    types:
+      - closed
+    branches:
+      - 'test'
   
 jobs:
   Build:
@@ -13,7 +16,7 @@ jobs:
        image_name: plazo/mvcdotnetdocker
        latest: false
        DOCKERREPONAME: plazo/mvcdotnetdocker
-       TAG: plazo/mvcdotnetdocker:test
+       ExtraTag: plazo/mvcdotnetdocker:test
       secrets:
        DOCKER_USER: ${{ secrets.DOCKER_USER }}
        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
@@ -41,3 +44,21 @@ jobs:
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         HEROKU_API_KEY : ${{secrets.HEROKU_API_KEY}}
         HEROKU_USERNAME: ${{secrets.HEROKU_USERNAME}}
+
+  ReleaseTest1:
+       needs: DeployTest1
+       uses: plazo1975/mvcdotnetdocker/.github/workflows/003_ReleaseImageToHeroku.yml@develop
+       with:
+        APPNAME: mvcdotnetdocker-tst
+       secrets:
+        HEROKU_API_KEY : ${{secrets.HEROKU_API_KEY}}
+        HEROKU_USERNAME: ${{secrets.HEROKU_USERNAME}} 
+  
+  ReleaseTest2:
+       needs: DeployTest2
+       uses: plazo1975/mvcdotnetdocker/.github/workflows/003_ReleaseImageToHeroku.yml@develop
+       with:
+        APPNAME: mvcdotnetdocker-tst-customer
+       secrets:
+        HEROKU_API_KEY : ${{secrets.HEROKU_API_KEY}}
+        HEROKU_USERNAME: ${{secrets.HEROKU_USERNAME}} 

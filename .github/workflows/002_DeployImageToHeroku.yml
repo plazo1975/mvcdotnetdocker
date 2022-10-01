@@ -22,7 +22,7 @@ on:
         
           
 jobs:
-  Deploy:
+  DeployImage:
     runs-on: ubuntu-latest
 
     steps:
@@ -53,4 +53,3 @@ jobs:
            docker login --username=_ --password ${{secrets.HEROKU_API_KEY}} registry.heroku.com
            docker tag ${{inputs.TAG}} registry.heroku.com/${{inputs.APPNAME}}/web
            docker push registry.heroku.com/${{inputs.APPNAME}}/web
-           heroku container:release web -a ${{inputs.APPNAME}}

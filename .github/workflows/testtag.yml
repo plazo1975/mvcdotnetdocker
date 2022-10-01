@@ -1,0 +1,19 @@
+name: test with tags
+
+on:
+  workflow_dispatch:
+  #push:
+  # branches:
+  #   - 'develop'
+  
+jobs:
+  Build:
+      uses: plazo1975/mvcdotnetdocker/.github/workflows/001_BuildAndPublishDockerImage.yml@develop
+      with:
+       image_name: plazo/mvcdotnetdocker
+       latest: true
+       DOCKERREPONAME: plazo/mvcdotnetdocker
+       #ExtraTag: plazo/mvcdotnetdocker:develop
+      secrets:
+       DOCKER_USER: ${{ secrets.DOCKER_USER }}
+       DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
