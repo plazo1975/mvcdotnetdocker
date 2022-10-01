@@ -13,7 +13,7 @@ jobs:
        image_name: plazo/mvcdotnetdocker
        latest: true
        DOCKERREPONAME: plazo/mvcdotnetdocker
-       ExtraTag: plazo/mvcdotnetdocker:bla
+       ExtraTag: plazo/mvcdotnetdocker:develop
       secrets:
        DOCKER_USER: ${{ secrets.DOCKER_USER }}
        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
