@@ -2,9 +2,12 @@ name: Deploy to test
 
 on:
   workflow_dispatch:
-  push:
-   branches:
-     - 'test'
+  #push:
+  pull_request_target:
+    types:
+      - closed
+    branches:
+      - 'test'
   
 jobs:
   Build:
