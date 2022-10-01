@@ -1,4 +1,4 @@
-name: 002 Deploy image to Heroku
+name: 003 Release image in Heroku
 
 on:
   workflow_call:
@@ -6,15 +6,8 @@ on:
        APPNAME:
          required: true
          type: string
-       TAG:
-         required: true
-         type: string
-       
+              
     secrets:
-        DOCKER_USER:
-          required: true
-        DOCKER_PASSWORD:
-          required: true
         HEROKU_API_KEY: 
           required: true
         HEROKU_USERNAME:
@@ -28,29 +21,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-            
-      - name: Login to Docker Hub
-        uses: docker/login-action@v2.0.0
-        with:
-         username: ${{ secrets.DOCKER_USER }}
-         password: ${{ secrets.DOCKER_PASSWORD }} 
-      
-      - name: Docker pull
-        run:
-          docker pull ${{inputs.TAG}}
-      
+       
       - name: Login to heroku container
         uses: AkhileshNS/heroku-deploy@v3.12.12
         with:
          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
          heroku_email: ${{secrets.HEROKU_USERNAME}}
-         docker_heroku_process_type: web
          region: Europe
          justlogin: true
       
-      - name: Deploy to heroku
+      - name: Release to heroku
         run: |
-           docker login --username=_ --password ${{secrets.HEROKU_API_KEY}} registry.heroku.com
-           docker tag ${{inputs.TAG}} registry.heroku.com/${{inputs.APPNAME}}/web
-           docker push registry.heroku.com/${{inputs.APPNAME}}/web
+           heroku container:login
            heroku container:release web -a ${{inputs.APPNAME}}
