@@ -1,3 +1,12 @@
+## [2.43.32](https://github.com/plazo1975/mvcdotnetdocker/compare/v2.43.31...v2.43.32) (2022-10-01)
+
+
+### Bug Fixes
+
+* Elis ([4710299](https://github.com/plazo1975/mvcdotnetdocker/commit/4710299d6f1e4afb41ea0be7ae1a23ba80c0dbf8))
+
+
+
 ## [2.43.31](https://github.com/plazo1975/mvcdotnetdocker/compare/v2.43.30...v2.43.31) (2022-10-01)
 
 
@@ -35,15 +44,6 @@
 ### Bug Fixes
 
 * version 4 stuff ([1971931](https://github.com/plazo1975/mvcdotnetdocker/commit/1971931c9fa94fae0dd07139dde4cffa0cf6e770))
-
-
-
-## [2.43.27](https://github.com/plazo1975/mvcdotnetdocker/compare/v2.43.26...v2.43.27) (2022-09-24)
-
-
-### Bug Fixes
-
-* test with fullname ([de56dd4](https://github.com/plazo1975/mvcdotnetdocker/commit/de56dd4c09bc4eea91645487702f81940728ce49))
 
 
 
