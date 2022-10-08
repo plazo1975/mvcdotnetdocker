@@ -23,7 +23,8 @@ on:
           
 jobs:
   DeployImage:
-    runs-on: ubuntu-latest
+    #runs-on: ubuntu-latest
+    runs-on: buildjet-4vcpu-ubuntu-2204
 
     steps:
       - name: Checkout
