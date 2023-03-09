@@ -1,0 +1,11 @@
+name: DeployA
+
+on: workflow_dispatch
+
+jobs:
+
+  message:
+    runs-on:  ubuntu-latest
+    steps:
+    - run:  echo "image is  build"
+    
