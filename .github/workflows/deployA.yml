@@ -1,6 +1,6 @@
 name: DeployA
 
-on: workflow_dispatch
+on: repository_dispatch
 
 jobs:
 
